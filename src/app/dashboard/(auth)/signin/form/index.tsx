@@ -6,8 +6,6 @@ import { useFormState, useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-interface FormSignInProps {}
-
 const initialFormState: ActionResult = {
   errorTitle: null,
   errorDesc: [],
@@ -23,9 +21,8 @@ const SubmitButton = () => {
   );
 };
 
-const FormSignIn: FC<FormSignInProps> = () => {
+const FormSignIn = () => {
   const [state, formAction] = useFormState(handleSignIn, initialFormState);
-  console.log({ state });
 
   return (
     <div className="w-full h-screen">
