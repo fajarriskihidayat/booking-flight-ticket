@@ -40,7 +40,7 @@ export default async function DashboardLayout({
             <section className="grow-0 w-[20%] h-screen shadow p-5 space-y-5">
               <div className="space-y-2">
                 <Button variant={"ghost"} asChild className="justify-start">
-                  <Link href={"/"}>Dashboard</Link>
+                  <Link href={"/dashboard"}>Dashboard</Link>
                 </Button>
               </div>
 

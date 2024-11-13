@@ -1,13 +1,13 @@
 "use client";
 
 import { ActionResult } from "@/app/dashboard/(auth)/signin/form/actions";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { saveAirplane, updateAirplane } from "../lib/actions";
 import { Airplane } from "@prisma/client";
 import { FC } from "react";
+import SubmitButtonForm from "../../components/submit-button-form";
 
 interface FormAirplaneProps {
   type?: "ADD" | "EDIT";
@@ -19,21 +19,10 @@ const initialFormState: ActionResult = {
   errorDesc: [],
 };
 
-const SubmitButton = () => {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button disabled={pending} className="w-full">
-      {pending ? "Loading..." : "Submit"}
-    </Button>
-  );
-};
-
 const FormAirplane: FC<FormAirplaneProps> = ({ type, defaultValues }) => {
   const updateAirplaneWithId = (_state: ActionResult, formData: FormData) =>
     updateAirplane(null, defaultValues?.id, formData);
 
-  console.log({ type });
   const [state, formAction] = useFormState(
     type === "ADD" ? saveAirplane : updateAirplaneWithId,
     initialFormState
@@ -83,7 +72,7 @@ const FormAirplane: FC<FormAirplaneProps> = ({ type, defaultValues }) => {
         />
       </div>
 
-      <SubmitButton />
+      <SubmitButtonForm />
     </form>
   );
 };
