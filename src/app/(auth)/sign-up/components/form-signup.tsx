@@ -4,7 +4,6 @@ import { ActionResult } from "@/app/dashboard/(auth)/signin/form/actions";
 import Link from "next/link";
 import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { nullable } from "zod";
 import { signUpUser } from "../lib/actions";
 
 const initialState: ActionResult = {
@@ -22,7 +21,7 @@ const SubmitButton = () => {
       className="text-center text-flysha-black rounded-full bg-flysha-light-purple font-bold w-full p-[12px_30px] 
       transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF] disabled:opacity-40"
     >
-      Create New Account
+      {pending ? "Loading..." : "Create New Account"}
     </button>
   );
 };
@@ -46,6 +45,7 @@ const FormSignUp = () => {
           </ul>
         </div>
       )}
+
       <div className="flex gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="font-medium">
@@ -98,7 +98,7 @@ const FormSignUp = () => {
       </div>
       <SubmitButton />
       <Link
-        href="signin.html"
+        href="/sign-in"
         className="text-center text-flysha-black hover:text-white rounded-full bg-white hover:bg-flysha-black font-semibold w-full p-[12px_30px] border border-flysha-black transition-all duration-300"
       >
         Sign In
