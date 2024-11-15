@@ -7,6 +7,7 @@ const nextConfig = {
         hostname: "rxrahdpfgysmdorgqlvn.supabase.co",
       },
     ],
+    unoptimized: true,
   },
 };
 

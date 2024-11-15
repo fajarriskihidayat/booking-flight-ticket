@@ -1,4 +1,6 @@
 import Link from "next/link";
+import NavbarAuth from "./NavbarAuth";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -10,13 +12,12 @@ const Navbar = () => {
         href="index.html"
         className="flex items-center shrink-0 text-2xl font-medium"
       >
-        {/* <Image
+        <Image
           width={120}
           height={60}
           src="/assets/images/logos/logo.svg"
           alt="logo"
-        /> */}
-        SafeFlight
+        />
       </Link>
       <ul className="nav-menus flex gap-[30px] items-center w-fit">
         <li>
@@ -44,12 +45,7 @@ const Navbar = () => {
             About
           </Link>
         </li>
-        <Link
-          href="sign-in"
-          className="font-bold text-flysha-black bg-flysha-light-purple rounded-full p-[12px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF]"
-        >
-          Sign In
-        </Link>
+        <NavbarAuth />
       </ul>
     </nav>
   );
