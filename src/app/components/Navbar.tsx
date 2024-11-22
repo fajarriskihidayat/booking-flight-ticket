@@ -9,7 +9,7 @@ const Navbar = () => {
       className="container max-w-[1130px] mx-auto flex justify-between items-center pt-[30px]"
     >
       <Link
-        href="index.html"
+        href="/"
         className="flex items-center shrink-0 text-2xl font-medium"
       >
         <Image
