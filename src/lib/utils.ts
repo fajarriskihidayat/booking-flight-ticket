@@ -1,7 +1,14 @@
-import { FlightSeat, TypeSeat } from "@prisma/client";
+import { Airplane, Flight, FlightSeat, TypeSeat } from "@prisma/client";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import dayjs from "dayjs";
+
+export type Checkout = {
+  id?: string;
+  seat?: TypeSeat;
+  flightDetail?: Flight & { plane: Airplane };
+  seatDetail?: FlightSeat;
+};
 
 export const CHECKOUT_KEY = "CHECKOUT_KEY";
 
@@ -49,7 +56,7 @@ export const generateSeatPerClass = (flightId: string) => {
 
 export const dateFormat = (
   date: Date | string,
-  format = "DD/MM/YYYY HH:mm"
+  format = "DD MMM YYYY HH:mm"
 ) => {
   if (!date) return "";
 
