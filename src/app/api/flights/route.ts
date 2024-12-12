@@ -33,7 +33,9 @@ export async function POST(request: NextRequest) {
                 // gte artinya lebih dari atau sama dengan (>=)
                 gte: departureDate,
               }
-            : {},
+            : {
+                gte: new Date(),
+              },
         planeId:
           body.planeIds.length > 0
             ? {
