@@ -129,3 +129,7 @@ export function makeid(length: number) {
   }
   return result;
 }
+
+export const capitalizeFirstLetters = (data: string) => {
+  return data.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+};

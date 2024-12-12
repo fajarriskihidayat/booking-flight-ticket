@@ -1,6 +1,7 @@
 import { getUrlFile } from "@/lib/supabase";
-import { dateFormat } from "@/lib/utils";
+import { capitalizeFirstLetters, dateFormat } from "@/lib/utils";
 import { Airplane, Flight, FlightSeat, Ticket } from "@prisma/client";
+import Link from "next/link";
 import React from "react";
 
 // Pick digunakan untuk mengambil type tertentu saja
@@ -36,10 +37,7 @@ const TicketCard = ({ data }: TicketCardProps) => {
         <div className="flex flex-col justify-center-center gap-[2px]">
           <p className="font-bold text-lg">{data.flight.plane.name}</p>
           <p className="text-sm text-flysha-off-purple">
-            {data.seat.type
-              .toLowerCase()
-              .replace(/\b\w/g, (c) => c.toUpperCase())}{" "}
-            Class
+            {capitalizeFirstLetters(data.seat.type)} Class
           </p>
         </div>
       </div>
@@ -65,12 +63,12 @@ const TicketCard = ({ data }: TicketCardProps) => {
           </p>
         </div>
       </div>
-      <a
-        href="my-ticket-details.html"
+      <Link
+        href={`/my-tickets/detail/${data.id}`}
         className="font-bold text-flysha-black bg-flysha-light-purple rounded-full p-[12px_20px] h-[48px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF]"
       >
         Details
-      </a>
+      </Link>
     </div>
   );
 };

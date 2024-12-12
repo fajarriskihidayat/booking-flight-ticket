@@ -22,7 +22,7 @@ export default async function DashboardLayout({
   const { session, user } = await getUser();
 
   if (session === null || user.role === "CUSTOMER") {
-    redirect("dashboard/signin");
+    redirect("/dashboard/signin");
   }
 
   return (
