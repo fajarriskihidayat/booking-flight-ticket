@@ -1,3 +1,5 @@
+"use client";
+
 import { User } from "lucia";
 import React, { FC } from "react";
 import FlightCard from "../../checkout/components/FlightCard";
