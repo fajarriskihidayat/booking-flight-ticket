@@ -22,7 +22,7 @@ export default async function DashboardLayout({
   const { session, user } = await getUser();
 
   if (session === null || user.role === "CUSTOMER") {
-    redirect("dashboard/signin");
+    redirect("/dashboard/signin");
   }
 
   return (
@@ -31,9 +31,7 @@ export default async function DashboardLayout({
         <section>
           <nav className="border-b border-muted p-5">
             <div className="flex flex-row items-center justify-between">
-              <span className="font-bold text-primary">
-                SafeFlight Dashboard
-              </span>
+              <span className="font-bold text-primary">FlySha Dashboard</span>
             </div>
           </nav>
           <section className="flex flex-row gap-5 items-start flex-nowrap">

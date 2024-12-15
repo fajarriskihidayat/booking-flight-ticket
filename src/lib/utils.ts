@@ -1,7 +1,33 @@
-import { FlightSeat, TypeSeat } from "@prisma/client";
+import { Airplane, Flight, FlightSeat, TypeSeat } from "@prisma/client";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import dayjs from "dayjs";
+
+export type Checkout = {
+  id?: string;
+  seat?: TypeSeat;
+  flightDetail?: Flight & { plane: Airplane };
+  seatDetail?: FlightSeat;
+};
+
+export const CHECKOUT_KEY = "CHECKOUT_KEY";
+
+export const SEAT_VALUES = {
+  ECONOMY: {
+    label: "Economy",
+    additionalPrice: 0,
+  },
+  BUSINESS: {
+    label: "Business",
+    additionalPrice: 500000,
+  },
+  FIRST: {
+    label: "First",
+    additionalPrice: 750000,
+  },
+};
+
+export type SeatValuesType = keyof typeof SEAT_VALUES;
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -30,7 +56,7 @@ export const generateSeatPerClass = (flightId: string) => {
 
 export const dateFormat = (
   date: Date | string,
-  format = "DD/MM/YYYY HH:mm"
+  format = "DD MMM YYYY HH:mm"
 ) => {
   if (!date) return "";
 
@@ -44,6 +70,21 @@ export const rupiahFormat = (value: number) => {
     style: "currency",
     currency: "IDR",
   }).format(value);
+};
+
+export const objectToParams = (obj: { [key: string]: unknown }) => {
+  const queryParams = Object.keys(obj)
+    .map((key) => {
+      if (obj[key] !== null) {
+        return `${key}=${obj[key]}`;
+      }
+
+      return "";
+    })
+    .filter((key) => key !== "")
+    .join("&");
+
+  return queryParams;
 };
 
 export const mappingSeats = (seats: FlightSeat[]) => {
@@ -74,4 +115,21 @@ export const mappingSeats = (seats: FlightSeat[]) => {
     totalSeatBusiness,
     totalSeatFirst,
   };
+};
+
+export function makeid(length: number) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
+export const capitalizeFirstLetters = (data: string) => {
+  return data.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
 };
