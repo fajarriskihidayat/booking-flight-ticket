@@ -21,27 +21,27 @@ const Navbar = () => {
       </Link>
       <ul className="nav-menus flex gap-[30px] items-center w-fit">
         <li>
-          <Link href="" className="font-medium">
+          <Link href="/" className="font-medium">
             Flash Sale
           </Link>
         </li>
         <li>
-          <Link href="" className="font-medium">
+          <Link href="/#Services" className="font-medium">
             Discover
           </Link>
         </li>
         <li>
-          <Link href="" className="font-medium">
+          <Link href="/#Selected" className="font-medium">
             Packages
           </Link>
         </li>
         <li>
-          <Link href="" className="font-medium">
+          <Link href="/#Testimonials" className="font-medium">
             Stories
           </Link>
         </li>
         <li>
-          <Link href="" className="font-medium">
+          <Link href="/" className="font-medium">
             About
           </Link>
         </li>

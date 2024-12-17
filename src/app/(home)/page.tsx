@@ -27,7 +27,10 @@ export default async function Home() {
                 Crafted by best talented people around the world.
               </p>
             </div>
-            <form action={searchFlight} className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-5">
+            <form
+              action={searchFlight}
+              className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-5"
+            >
               <div className="flex gap-[50px] items-center p-5">
                 <div className="flex flex-col justify-center gap-[14px]">
                   <label htmlFor="departure" className="text-lg">
@@ -343,7 +346,7 @@ export default async function Home() {
       >
         <div className="flex flex-col gap-[6px] items-center">
           <h2 className="font-bold text-[32px] leading-[48px] text-center">
-            Best Selective
+            Testimonials
           </h2>
           <p className="font-medium text-flysha-off-purple">
             We gave them all the best experiences ever

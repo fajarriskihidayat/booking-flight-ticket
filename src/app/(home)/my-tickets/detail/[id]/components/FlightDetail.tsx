@@ -88,7 +88,7 @@ const FlightDetail = ({ data }: FlightDetailProps) => {
         <div className="flex justify-between text-flysha-black">
           <span>Airport</span>
           <span className="font-semibold">
-            {data.flight.departureCityCode} - ${data.flight.destinationCityCode}
+            {data.flight.departureCityCode} - {data.flight.destinationCityCode}
           </span>
         </div>
         <div className="flex justify-between text-flysha-black">
