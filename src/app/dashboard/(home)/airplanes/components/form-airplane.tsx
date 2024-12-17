@@ -21,7 +21,7 @@ const initialFormState: ActionResult = {
 
 const FormAirplane: FC<FormAirplaneProps> = ({ type, defaultValues }) => {
   const updateAirplaneWithId = (_state: ActionResult, formData: FormData) =>
-    updateAirplane(null, defaultValues?.id, formData);
+    updateAirplane(null, defaultValues ? defaultValues.id : null, formData);
 
   const [state, formAction] = useFormState(
     type === "ADD" ? saveAirplane : updateAirplaneWithId,

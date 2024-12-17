@@ -1,12 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
 import React, { FC } from "react";
-import { useFormStatus } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { deleteAirplane } from "../lib/actions";
+import { ActionResult } from "@/app/dashboard/(auth)/signin/form/actions";
 
 interface DeleteAirplaneProps {
   id: string;
 }
+
+const initialState: ActionResult = {
+  errorTitle: null,
+  errorDesc: [],
+};
 
 const SubmitButton = () => {
   const { pending } = useFormStatus();
@@ -20,9 +26,10 @@ const SubmitButton = () => {
 
 const DeleteAirplane: FC<DeleteAirplaneProps> = ({ id }) => {
   const deleteAirplaneWithId = deleteAirplane.bind(null, id);
+  const [state, formAction] = useFormState(deleteAirplaneWithId, initialState);
 
   return (
-    <form action={deleteAirplaneWithId}>
+    <form action={formAction}>
       <SubmitButton />
     </form>
   );
