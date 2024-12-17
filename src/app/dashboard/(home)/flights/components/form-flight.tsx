@@ -16,6 +16,7 @@ import { ActionResult } from "@/app/dashboard/(auth)/signin/form/actions";
 import { useFormState } from "react-dom";
 import { saveFlight, updateFlight } from "../lib/actions";
 import { dateFormat } from "@/lib/utils";
+import { devNull } from "os";
 
 interface FormFlightProps {
   airplanes: Airplane[];
@@ -28,9 +29,13 @@ const initialFormState: ActionResult = {
   errorDesc: [],
 };
 
-const FormFlight = ({ airplanes, type, defaultValues }: FormFlightProps) => {
+const FormFlight = ({
+  airplanes,
+  type,
+  defaultValues = null,
+}: FormFlightProps) => {
   const updateFlightWithId = (_state: ActionResult, formData: FormData) =>
-    updateFlight(null, defaultValues?.id, formData);
+    updateFlight(null, defaultValues ? defaultValues.id : null, formData);
 
   const [state, formAction] = useFormState(
     type === "ADD" ? saveFlight : updateFlightWithId,
@@ -103,10 +108,11 @@ const FormFlight = ({ airplanes, type, defaultValues }: FormFlightProps) => {
             placeholder="Tanggal keberangkatan..."
             name="departureDate"
             id="departureDate"
-            defaultValue={dateFormat(
-              defaultValues?.departureDate,
-              "YYYY-MM-DDTHH:mm"
-            )}
+            defaultValue={
+              defaultValues?.departureDate
+                ? dateFormat(defaultValues?.departureDate, "YYYY-MM-DDTHH:mm")
+                : undefined
+            }
             required
           />
         </div>
@@ -140,10 +146,11 @@ const FormFlight = ({ airplanes, type, defaultValues }: FormFlightProps) => {
             placeholder="Tanggal tiba..."
             name="arrivalDate"
             id="arrivalDate"
-            defaultValue={dateFormat(
-              defaultValues?.arrivalDate,
-              "YYYY-MM-DDTHH:mm"
-            )}
+            defaultValue={
+              defaultValues?.arrivalDate
+                ? dateFormat(defaultValues?.arrivalDate, "YYYY-MM-DDTHH:mm")
+                : undefined
+            }
             required
           />
         </div>

@@ -69,9 +69,16 @@ export async function saveAirplane(
 
 export async function updateAirplane(
   prevState: unknown,
-  id: string,
+  id: string | null,
   formData: FormData
 ): Promise<ActionResult> {
+  if (!id) {
+    return {
+      errorTitle: "Params ID Missing",
+      errorDesc: [],
+    };
+  }
+
   const image = formData.get("image") as File;
 
   let airplaneFormSchemaUpdate;
