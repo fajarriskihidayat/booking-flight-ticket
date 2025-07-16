@@ -27,7 +27,10 @@ export default async function Home() {
                 Crafted by best talented people around the world.
               </p>
             </div>
-            <form action={searchFlight} className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-5">
+            <form
+              action={searchFlight}
+              className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-5"
+            >
               <div className="flex gap-[50px] items-center p-5">
                 <div className="flex flex-col justify-center gap-[14px]">
                   <label htmlFor="departure" className="text-lg">

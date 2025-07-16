@@ -3,9 +3,14 @@ import Benefits from "./components/Benefits";
 import FlightCard from "./components/FlightCard";
 import PaymentDetail from "./components/PaymentDetail";
 import { getUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 const CheckoutPage = async () => {
-  const { user } = await getUser();
+  const { session, user } = await getUser();
+
+  if (!session || user.role !== "CUSTOMER") {
+    return redirect("/");
+  }
 
   return (
     <>

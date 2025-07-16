@@ -8,7 +8,7 @@ import { countTicket, getMyTickets } from "./lib/data";
 const MyTicketsPage = async () => {
   const { session, user } = await getUser();
 
-  if (!session) {
+  if (!session || user.role !== "CUSTOMER") {
     return redirect("/sign-in");
   }
 

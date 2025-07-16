@@ -14,8 +14,6 @@ async function main() {
       password: passAdmin,
     },
   });
-
-  console.log({ userSeed });
 }
 
 main()
