@@ -2,6 +2,8 @@
 
 import React from "react";
 import FormSignIn from "./components/form-signin";
+import { getUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 const SignInPage = () => {
   return (

@@ -3,9 +3,14 @@ import { getUser } from "@/lib/auth";
 import React from "react";
 import CheckoutCard from "./components/CheckoutCard";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const SuccessPage = async () => {
-  const { user } = await getUser();
+  const { session, user } = await getUser();
+
+  if (!session || user.role !== "CUSTOMER") {
+    return redirect("/");
+  }
 
   return (
     <>

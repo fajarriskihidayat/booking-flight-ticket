@@ -3,6 +3,7 @@ import SeatList from "./components/SeatList";
 import FlightDetail from "./components/FlightDetail";
 import { getFlightById } from "../../lib/data";
 import { getUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 type Params = {
   id: string;
@@ -13,8 +14,12 @@ interface ChooseSeatParams {
 }
 
 const ChooseSeatPage = async ({ params }: ChooseSeatParams) => {
-  const { session } = await getUser();
+  const { session, user } = await getUser();
   const flight = await getFlightById(params.id);
+
+  if (!session || user.role !== "CUSTOMER") {
+    return redirect("/");
+  }
 
   return (
     <section

@@ -54,14 +54,21 @@ export async function signInUser(
     };
   }
 
-  const session = await lucia.createSession(existingUser.id, {});
-  const sessionCookie = await lucia.createSessionCookie(session.id);
+  try {
+    const session = await lucia.createSession(existingUser.id, {});
+    const sessionCookie = await lucia.createSessionCookie(session.id);
 
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes
-  );
+    cookies().set(
+      sessionCookie.name,
+      sessionCookie.value,
+      sessionCookie.attributes
+    );
+  } catch (error) {
+    return {
+      errorTitle: "Failed to insert data",
+      errorDesc: ["Terjadi masalah pada koneksi, silahkan coba lagi"],
+    };
+  }
 
   return redirect("/");
 }
