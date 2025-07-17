@@ -9,7 +9,7 @@ const CheckoutPage = async () => {
   const { session, user } = await getUser();
 
   if (!session || user.role !== "CUSTOMER") {
-    return redirect("/");
+    return redirect("/sign-in");
   }
 
   return (

@@ -1,9 +1,8 @@
-import React from "react";
-import SeatList from "./components/SeatList";
-import FlightDetail from "./components/FlightDetail";
-import { getFlightById } from "../../lib/data";
 import { getUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { getFlightById } from "../../lib/data";
+import FlightDetail from "./components/FlightDetail";
+import SeatList from "./components/SeatList";
 
 type Params = {
   id: string;
@@ -18,7 +17,7 @@ const ChooseSeatPage = async ({ params }: ChooseSeatParams) => {
   const flight = await getFlightById(params.id);
 
   if (!session || user.role !== "CUSTOMER") {
-    return redirect("/");
+    return redirect("/sign-in");
   }
 
   return (
