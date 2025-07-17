@@ -19,9 +19,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { session } = await getUser();
+  const { session, user } = await getUser();
 
-  if (session) {
+  if (session && user.role === "CUSTOMER") {
     redirect("/");
   }
 
